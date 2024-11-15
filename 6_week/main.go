@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-	"go_todo_app/config" // 이 부분은 실제 config 패키지 경로로 수정하세요.
 	"log"
 	"net"
 	"os"
+
+	"github.com/yoonaji/go_todo_app/6_week/config"
 )
 
 func main() {
@@ -31,5 +32,3 @@ func run(ctx context.Context) error {
 	s := NewServer(l, mux)
 	return s.Run(ctx)
 }
-
-
