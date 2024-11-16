@@ -16,7 +16,7 @@ type Task struct {
 	Title    string     `json:"title"`
 	Status   TaskStatus `json:"status"`
 	Created  time.Time  `json:"created"`
-	Modified time.Time  `json:"modified" db: "modified"`
+	Modified time.Time  `json:"modified" db:"modified"`
 }
 
 type Tasks []*Task
