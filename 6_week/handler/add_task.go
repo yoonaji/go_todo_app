@@ -26,19 +26,19 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}, http.StatusInternalServerError)
 		return
 	}
-	err := validator.New().Struct(b)
-	if err != nil {
+	if err := at.Validator.Struct(b); err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
 		}, http.StatusBadRequest)
 		return
 	}
+
 	t := &entity.Task{
 		Title:   b.Title,
-		Status:  "todo",
+		Status:  entity.TaskStatusTodo,
 		Created: time.Now(),
 	}
-	id, err := store.Tasks.Add(t)
+	id, err := at.Store.Add(t)
 	if err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
@@ -46,8 +46,7 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	rsp := struct {
-		ID int `json:"id"`
-	}{ID: int(id)}
+		ID entity.TaskID `json:"id"`
+	}{ID: id}
 	RespondJSON(ctx, w, rsp, http.StatusOK)
-
 }
