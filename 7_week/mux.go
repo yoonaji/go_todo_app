@@ -1,3 +1,4 @@
+/*
 package main
 
 import (
@@ -10,6 +11,7 @@ import (
 	"github.com/yoonaji/go_todo_app/6_week/config"
 	"github.com/yoonaji/go_todo_app/6_week/handler"
 	"github.com/yoonaji/go_todo_app/6_week/store"
+	"github.com/yoonaji/go_todo_app/7_week/service"
 )
 
 func NewMux(ctx context.Context, cfg *config.Config) (http.Handler, func(), error) {
@@ -24,9 +26,15 @@ func NewMux(ctx context.Context, cfg *config.Config) (http.Handler, func(), erro
 		return nil, cleanup, err
 	}
 	r := store.Repository{Clocker: clock.RealClocker{}}
-	at := &handler.AddTask{DB: db, Repo: &r, Validator: v}
+	at := &handler.AddTask{
+		Service:   &service.AddTask{DB: db, Repo: &r},
+		Validator: v,
+	}
 	mux.Post("/tasks", at.ServeHTTP)
-	lt := &handler.ListTask{DB: db, Repo: &r}
+	lt := &handler.ListTask{
+		Service: &service.ListTask{DB: db, Repo: &r},
+	}
 	mux.Get("/tasks", lt.ServeHTTP)
 	return mux, cleanup, nil
 }
+*/
