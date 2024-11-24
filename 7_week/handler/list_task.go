@@ -3,15 +3,13 @@ package handler
 import (
 	"net/http"
 
-	"github.com/jmoiron/sqlx"
-	"github.com/yoonaji/go_todo_app/6_week/entity"
-	"github.com/yoonaji/go_todo_app/6_week/store"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
 )
 
 type ListTask struct {
-	DB   *sqlx.DB
-	Repo *store.Repository
+	Service ListTasksService
 }
+
 type task struct {
 	ID     entity.TaskID     `json:"id"`
 	Title  string            `json:"title"`
@@ -20,11 +18,12 @@ type task struct {
 
 func (lt *ListTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
-	tasks, err := lt.Repo.ListTasks(ctx, lt.DB)
+	tasks, err := lt.Service.ListTasks(ctx)
 	if err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
 		}, http.StatusInternalServerError)
+		return
 	}
 	rsp := []task{}
 	for _, t := range tasks {

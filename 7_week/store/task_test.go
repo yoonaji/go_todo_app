@@ -7,9 +7,9 @@ import (
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/google/go-cmp/cmp"
 	"github.com/jmoiron/sqlx"
-	"github.com/yoonaji/go_todo_app/6_week/clock"
-	"github.com/yoonaji/go_todo_app/6_week/entity"
-	"github.com/yoonaji/go_todo_app/6_week/testutil"
+	"github.com/yoonaji/go_todo_app/7_week/clock"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
+	"github.com/yoonaji/go_todo_app/7_week/testutil"
 )
 
 func prepareTasks(ctx context.Context, t *testing.T, con Execer) entity.Tasks {

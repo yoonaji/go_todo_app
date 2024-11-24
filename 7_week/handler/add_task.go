@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/yoonaji/go_todo_app/6_week/entity"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
 )
 
 type AddTask struct {

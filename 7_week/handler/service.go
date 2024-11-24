@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/yoonaji/go_todo_app/6_week/entity"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
 )
 
 //go:generate go run github.com/matryer/moq -out moq_test.go . ListTasksService AddTaskService
@@ -12,4 +12,8 @@ type ListTasksService interface {
 }
 type AddTaskService interface {
 	AddTask(ctx context.Context, title string) (*entity.Task, error)
+}
+
+type RegisterUserService interface {
+	RegisterUser(ctx context.Context, name, password, role string) (*entity.User, error)
 }

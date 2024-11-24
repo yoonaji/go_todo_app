@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/budougumi0617/go_todo_app/entity"
-	"github.com/budougumi0617/go_todo_app/store"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
+	"github.com/yoonaji/go_todo_app/7_week/store"
 )
 
 type AddTask struct {
