@@ -5,7 +5,7 @@ package handler
 
 import (
 	"context"
-	"github.com/yoonaji/go_todo_app/6_week/entity"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
 	"sync"
 )
 

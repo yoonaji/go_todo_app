@@ -1,4 +1,3 @@
-/*
 package main
 
 import (
@@ -7,11 +6,11 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/validator/v10"
-	"github.com/yoonaji/go_todo_app/6_week/clock"
 	"github.com/yoonaji/go_todo_app/6_week/config"
-	"github.com/yoonaji/go_todo_app/6_week/handler"
-	"github.com/yoonaji/go_todo_app/6_week/store"
+	"github.com/yoonaji/go_todo_app/7_week/clock"
+	"github.com/yoonaji/go_todo_app/7_week/handler"
 	"github.com/yoonaji/go_todo_app/7_week/service"
+	"github.com/yoonaji/go_todo_app/7_week/store"
 )
 
 func NewMux(ctx context.Context, cfg *config.Config) (http.Handler, func(), error) {
@@ -35,6 +34,10 @@ func NewMux(ctx context.Context, cfg *config.Config) (http.Handler, func(), erro
 		Service: &service.ListTask{DB: db, Repo: &r},
 	}
 	mux.Get("/tasks", lt.ServeHTTP)
+	ru := &handler.RegisterUser{
+		Service:   &service.RegisterUser{DB: db, Repo: &r},
+		Validator: v,
+	}
+	mux.Post("/register", ru.ServeHTTP)
 	return mux, cleanup, nil
 }
-*/

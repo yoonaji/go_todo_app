@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/yoonaji/go_todo_app/6_week/entity"
-	"github.com/yoonaji/go_todo_app/6_week/store"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
+	"github.com/yoonaji/go_todo_app/7_week/store"
 )
 
 //go:generate go run github.com/matryer/moq -out moq_test.go . TaskAdder TaskLister
