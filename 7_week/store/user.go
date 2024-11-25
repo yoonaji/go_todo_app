@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/yoonaji/go_todo_app/6_week/entity"
 	"github.com/go-sql-driver/mysql"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
 )
 
 func (r *Repository) RegisterUser(ctx context.Context, db Execer, u *entity.User) error {
