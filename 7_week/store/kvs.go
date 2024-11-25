@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/budougumi0617/go_todo_app/config"
-	"github.com/budougumi0617/go_todo_app/entity"
 	"github.com/go-redis/redis/v8"
+	"github.com/yoonaji/go_todo_app/7_week/config"
+	"github.com/yoonaji/go_todo_app/7_week/entity"
 )
 
 func NewKVS(ctx context.Context, cfg *config.Config) (*KVS, error) {
